@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+
+.DS_Store
+**/.DS_Store
+faces/*
+temp_faces/*
+videos/*
+*.csv
+*.ipc
