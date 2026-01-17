@@ -2,6 +2,7 @@ import os
 import polars as pl
 from pathlib import Path
 
+
 class IdentityManager:
     @staticmethod
     def get_existing_ids(faces_dir="faces", temp_dir="temp_faces"):
