@@ -49,7 +49,18 @@ def main():
             break
         elif key == ord("s"):
             engine.save_db()
-            df.write_csv(f"Realtime_Report_{time.strftime('%Y%m%d_%H%M%S')}.csv")
+            # df.write_csv(f"Realtime_Report_{time.strftime('%Y%m%d_%H%M%S')}.csv")
+            # final.write_csv(csv_path)
+            # 1. 以标准的 utf-8 打开文件 (满足 Polars)
+            with open(
+                f"Realtime_Report_{time.strftime('%Y%m%d_%H%M%S')}.csv",
+                "w",
+                encoding="utf-8",
+            ) as f:
+                # 2. 手动写入 BOM 字符 (满足 Excel)
+                f.write("\ufeff")
+                # 3. 让 Polars 接着写入 CSV 数据
+                df.write_csv(f)
             print("[INFO] Snapshot saved.")
 
     cap.release()
